@@ -120,6 +120,7 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
             meetingsBooked: e.meetings_booked,
             meetingsCompleted: e.meetings_completed,
             proposalsSent: e.proposals_sent,
+            statusBadge: e.status_badge,
           })),
           startDate: settings.start_date,
           totalBudget: settings.total_budget,
@@ -139,11 +140,13 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
     if (updatedFields.meetingsBooked !== undefined) supabaseFields.meetings_booked = updatedFields.meetingsBooked;
     if (updatedFields.meetingsCompleted !== undefined) supabaseFields.meetings_completed = updatedFields.meetingsCompleted;
     if (updatedFields.proposalsSent !== undefined) supabaseFields.proposals_sent = updatedFields.proposalsSent;
+    if (updatedFields.statusBadge !== undefined) supabaseFields.status_badge = updatedFields.statusBadge;
     
     // Remove camelCase fields
     delete supabaseFields.meetingsBooked;
     delete supabaseFields.meetingsCompleted;
     delete supabaseFields.proposalsSent;
+    delete supabaseFields.statusBadge;
 
     try {
       const { error } = await supabase
